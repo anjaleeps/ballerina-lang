@@ -1,6 +1,9 @@
 name: CI Ubuntu
 
 on:
+  push:
+    branches:
+      -anjalee-lang
   pull_request:
     branches:
       - master
@@ -8,9 +11,6 @@ on:
       - release-stage
       - stage
       - ballerina-1.2.x
-  push:
-    branches:
-      -anjalee-lang
 
 jobs:
   ubuntu_build:
@@ -50,3 +50,4 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           files: ./.jacoco/reports/jacoco/report.xml
+
