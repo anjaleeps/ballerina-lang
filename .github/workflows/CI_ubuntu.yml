@@ -1,10 +1,6 @@
 name: CI Ubuntu
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      -anjalee-lang
   pull_request:
     branches:
       - master
@@ -44,10 +40,12 @@ jobs:
           ./gradlew build --max-workers=2 --scan
           find ~/.gradle/caches/ -name "*.lock" -type f -delete
 
-      - name: Generate code coverage report
+      - name: Generate Jacoco report
+        if:  github.event_name == 'pull_request'
         run: ./gradlew createCodeCoverageReport
 
       - name: Generate Codecov Report
+        if:  github.event_name == 'pull_request'
         uses: codecov/codecov-action@v1
         with:
           files: ./.jacoco/reports/jacoco/report.xml
