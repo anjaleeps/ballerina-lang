@@ -1,6 +1,7 @@
 name: CI Ubuntu
 
 on:
+  workflow_dispatch:
   push:
     branches:
       -anjalee-lang
