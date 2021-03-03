@@ -1,6 +1,10 @@
 name: CI Ubuntu
 
 on:
+  workflow_dispatch:
+  push:
+    branches:
+      -anjalee-lang
   pull_request:
     branches:
       - master
@@ -8,6 +12,7 @@ on:
       - release-stage
       - stage
       - ballerina-1.2.x
+      - anjalee-lang
 
 jobs:
   ubuntu_build:
