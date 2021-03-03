@@ -44,11 +44,9 @@ jobs:
           find ~/.gradle/caches/ -name "*.lock" -type f -delete
 
       - name: Generate Jacoco Report
-        if: github.event_name == 'pull_request'
         run: ./gradlew createCodeCoverageReport
 
       - name: Generate Codecov Report
-        if: github.event_name == 'pull_request'
         uses: codecov/codecov-action@v1
         with:
           files: ./.jacoco/reports/jacoco/report.xml
