@@ -8,6 +8,9 @@ on:
       - release-stage
       - stage
       - ballerina-1.2.x
+  push:
+    branches:
+      -anjalee-lang
 
 jobs:
   ubuntu_build:
@@ -42,7 +45,7 @@ jobs:
           find ~/.gradle/caches/ -name "*.lock" -type f -delete
 
       - name: Generate Codecov Report
-          if: github.event_name == 'pull_request'
-          uses: codecov/codecov-action@v1
-          with:
-            files: ./.jacoco/reports/jacoco/report.xml
+        if: github.event_name == 'pull_request'
+        uses: codecov/codecov-action@v1
+        with:
+          files: ./.jacoco/reports/jacoco/report.xml
