@@ -127,7 +127,7 @@ public class CoverageReport {
             final CoverageBuilder coverageBuilder = analyzeStructure();
             createReport(coverageBuilder.getBundle(title), moduleCoverageMap);
             createXMLReport(getPartialCoverageModifiedBundle(coverageBuilder));
-            CodeCoverageUtils.deleteDirectory(coverageDir.resolve(BIN_DIR).toFile());
+//            CodeCoverageUtils.deleteDirectory(coverageDir.resolve(BIN_DIR).toFile());
         } else {
             String msg = "Unable to generate code coverage for the module " + packageName + ". Jar files dont exist.";
             throw new NoSuchFileException(msg);
